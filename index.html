@@ -305,8 +305,11 @@ textarea{
 		<label id="lblCompanyName">Nom de compagnie</label>
 		<input id="companyName" type="text" >
 
-		<label id="lblLocation">Localisation</label>
-		<input id="location" type="text" >
+		<label id="lbllocalisation">Localisation</label>
+		<input id="localisation" type="text" >
+		
+		<label id="lblEmailAddress">Courriel</label>
+		<input id="emailAddress" type="text" >
 
 		<div id="timeGroup">
             <label id="lblTime">Heure</label>
@@ -436,7 +439,8 @@ const servicesField=document.getElementById("services");
 const importantNoteField=document.getElementById("importantNote");
 const languageField=document.getElementById("language");
 const companyNameField = document.getElementById("companyName");
-const locationField = document.getElementById("location");
+const localisationField = document.getElementById("localisation");
+const emailAddressField = document.getElementById("emailAddress");
 
 const titleFieldEN=document.getElementById("titleEN");
 const descFieldEN=document.getElementById("descriptionEN");
@@ -464,6 +468,7 @@ info:"📢 Information",
 maintenance:"🔧 Maintenance",
 incident:"🚨 Incident",
 helpTitle: "ℹ️ Guide rapide",
+emailAddress: "Courriel",
 helpContent: `
 <p><strong>Comment utiliser l'application :</strong></p>
 
@@ -514,6 +519,7 @@ info:"📢 Information",
 maintenance:"🔧 Maintenance",
 incident:"🚨 Incident",
 helpTitle: "ℹ️ Quick Guide",
+emailAddress: "Email Address",
 helpContent: `
 <p><strong>How to use the application:</strong></p>
 
@@ -659,6 +665,9 @@ translations[lang].maintenance;
 document.getElementById("optIncident").textContent=
 translations[lang].incident;
 
+document.getElementById("lblEmailAddress").textContent=
+translations[lang].emailAddress;
+
 
 document.getElementById("helpTitle").innerHTML =
     translations[lang].helpTitle;
@@ -676,7 +685,8 @@ let desc=(descField.value || "").replace(/\n/g,"<br>");
 let date=dateField.value || "-";
 let time=timeField.value || "-";
 let companyName=companyNameField.value || "-";
-let localisation=locationField.value || "-";
+let localisation=localisationField.value || "-";
+let emailAddress=emailAddressField.value || "-";
 
 
 let services=(servicesField.value || "-").replace(/\n/g,"<br>");
@@ -729,9 +739,6 @@ html=`
                                         ℹ️ Information importante
                                     </strong>
                                 </td>
-                                <td align="right" style="font-size:12px;">
-                                    ${time}
-                                </td>
                             </tr>
                         </table>
                     </td>
@@ -769,9 +776,9 @@ html=`
                                 <td style="padding:18px;">
                                     <strong>Questions ou préoccupations ?</strong><br>
                                     Communiquez avec l'équipe TI à
-                                    <a href="mailto:SupportTI@*.com"
+                                    <a href="mailto:${emailAddress}"
                                        style="color:#2563EB;text-decoration:none;">
-                                        SupportTI@*.com
+                                        ${emailAddress}
                                     </a>
                                 </td>
                             </tr>
@@ -856,9 +863,9 @@ html=`
                                 <td style="padding:18px;">
                                     <strong>Questions or concerns?</strong><br>
                                     Please contact the IT Team at
-                                    <a href="mailto:ITSupport@**.com"
+                                    <a href="mailto:${emailAddress}"
                                        style="color:#2563EB;text-decoration:none;">
-                                        ITSupport@**.com
+                                        ${emailAddress}
                                     </a>
                                 </td>
                             </tr>
@@ -1312,7 +1319,8 @@ descField.addEventListener("input",renderPreview);
 titleFieldEN.addEventListener("input",renderPreview);
 descFieldEN.addEventListener("input",renderPreview);
 companyNameField.addEventListener("input", renderPreview);
-locationField.addEventListener("input", renderPreview);
+localisationField.addEventListener("input", renderPreview);
+emailAddressField.addEventListener("input", renderPreview);
 typeField.addEventListener("change", () => {
 
     updateFieldVisibility();
