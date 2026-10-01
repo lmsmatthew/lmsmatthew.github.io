@@ -335,8 +335,8 @@ textarea{
         <textarea id="description"></textarea>
 		
 		<div id="emailFRGroup">
-			<label id="lblEmailAddress">Courriel</label>
-			<input id="emailAddress" type="text" >
+			<label id="lblEmailAddressFR">Courriel</label>
+			<input id="emailAddressFR" type="text" >
 		</div>
 
         <div class="section-title">
@@ -360,8 +360,8 @@ textarea{
         <textarea id="descriptionEN"></textarea>
 		
 		<div id="emailENGroup">
-			<label id="lblEmailAddress">Courriel</label>
-			<input id="emailAddress" type="text" >
+			<label id="lblEmailAddressEN">Courriel</label>
+			<input id="emailAddressEN" type="text" >
 		</div>
 
         <div id="dateGroup">
@@ -452,12 +452,14 @@ const importantNoteField=document.getElementById("importantNote");
 const languageField=document.getElementById("language");
 const companyNameField = document.getElementById("companyName");
 const localisationField = document.getElementById("localisation");
-const emailAddressField = document.getElementById("emailAddress");
+const emailAddressFRField = document.getElementById("emailAddressFR");
+
 
 const titleFieldEN=document.getElementById("titleEN");
 const descFieldEN=document.getElementById("descriptionEN");
 const servicesFieldEN=document.getElementById("servicesEN");
 const importantNoteFieldEN=document.getElementById("importantNoteEN");
+const emailAddressENField = document.getElementById("emailAddressEN");
 
 const translations={
 fr:{
@@ -480,7 +482,8 @@ info:"📢 Information",
 maintenance:"🔧 Maintenance",
 incident:"🚨 Incident",
 helpTitle: "ℹ️ Guide rapide",
-emailAddress: "Courriel",
+emailAddressFR: "Courriel",
+emailAddressEN: "Courriel",
 helpContent: `
 <p><strong>Comment utiliser l'application :</strong></p>
 
@@ -531,7 +534,8 @@ info:"📢 Information",
 maintenance:"🔧 Maintenance",
 incident:"🚨 Incident",
 helpTitle: "ℹ️ Quick Guide",
-emailAddress: "Email Address",
+emailAddressFR: "Email Address",
+emailAddressEN: "Email Address",
 helpContent: `
 <p><strong>How to use the application:</strong></p>
 
@@ -685,8 +689,11 @@ translations[lang].maintenance;
 document.getElementById("optIncident").textContent=
 translations[lang].incident;
 
-document.getElementById("lblEmailAddress").textContent=
-translations[lang].emailAddress;
+document.getElementById("lblEmailAddressFR").textContent=
+translations[lang].emailAddressFR;
+
+document.getElementById("lblEmailAddressEN").textContent=
+translations[lang].emailAddressEN;
 
 
 document.getElementById("helpTitle").innerHTML =
@@ -706,7 +713,9 @@ let date=dateField.value || "-";
 let time=timeField.value || "-";
 let companyName=companyNameField.value || "-";
 let localisation=localisationField.value || "-";
-let emailAddress=emailAddressField.value || "-";
+let emailAddressFR=emailAddressFRField.value || "-";
+let emailAddressEN=emailAddressENField.value || "-";
+
 
 
 let services=(servicesField.value || "-").replace(/\n/g,"<br>");
@@ -796,9 +805,9 @@ html=`
                                 <td style="padding:18px;">
                                     <strong>Questions ou préoccupations ?</strong><br>
                                     Communiquez avec l'équipe TI à
-                                    <a href="mailto:${emailAddress}"
+                                    <a href="mailto:${emailAddressFR}"
                                        style="color:#2563EB;text-decoration:none;">
-                                        ${emailAddress}
+                                        ${emailAddressFR}
                                     </a>
                                 </td>
                             </tr>
@@ -883,9 +892,9 @@ html=`
                                 <td style="padding:18px;">
                                     <strong>Questions or concerns?</strong><br>
                                     Please contact the IT Team at
-                                    <a href="mailto:${emailAddress}"
+                                    <a href="mailto:${emailAddressEN}"
                                        style="color:#2563EB;text-decoration:none;">
-                                        ${emailAddress}
+                                        ${emailAddressEN}
                                     </a>
                                 </td>
                             </tr>
@@ -1340,7 +1349,8 @@ titleFieldEN.addEventListener("input",renderPreview);
 descFieldEN.addEventListener("input",renderPreview);
 companyNameField.addEventListener("input", renderPreview);
 localisationField.addEventListener("input", renderPreview);
-emailAddressField.addEventListener("input", renderPreview);
+emailAddressFRField.addEventListener("input", renderPreview);
+emailAddressENField.addEventListener("input", renderPreview);
 typeField.addEventListener("change", () => {
 
     updateFieldVisibility();
