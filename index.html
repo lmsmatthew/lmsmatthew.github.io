@@ -308,8 +308,6 @@ textarea{
 		<label id="lbllocalisation">Localisation</label>
 		<input id="localisation" type="text" >
 		
-		<label id="lblEmailAddress">Courriel</label>
-		<input id="emailAddress" type="text" >
 
 		<div id="timeGroup">
             <label id="lblTime">Heure</label>
@@ -335,6 +333,11 @@ textarea{
 
         <label id="lblDescription">Description</label>
         <textarea id="description"></textarea>
+		
+		<div id="emailFRGroup">
+			<label id="lblEmailAddress">Courriel</label>
+			<input id="emailAddress" type="text" >
+		</div>
 
         <div class="section-title">
             🇬🇧 English
@@ -355,6 +358,11 @@ textarea{
 
         <label id="lblDescriptionEN">Description en anglais</label>
         <textarea id="descriptionEN"></textarea>
+		
+		<div id="emailENGroup">
+			<label id="lblEmailAddress">Courriel</label>
+			<input id="emailAddress" type="text" >
+		</div>
 
         <div id="dateGroup">
             <label id="lblDate">Date</label>
@@ -381,7 +389,9 @@ textarea{
 
     </div>
 
+
 </div>
+
 
 <div id="toast" class="toast">
 
@@ -427,6 +437,8 @@ textarea{
     </div>
 
 </div>
+
+
 
 <script>
 
@@ -590,6 +602,8 @@ function updateFieldVisibility() {
     document.getElementById("importantNoteGroup").style.display = "none";
 	document.getElementById("importantNoteENGroup").style.display = "none";
 	document.getElementById("servicesENGroup").style.display = "none";
+	document.getElementById("emailFRGroup").style.display = "none";
+	document.getElementById("emailENGroup").style.display = "none";
 
     switch(type) {
 
@@ -606,7 +620,13 @@ function updateFieldVisibility() {
 			document.getElementById("timeGroup").style.display = "block";
 			document.getElementById("servicesENGroup").style.display = "block";
 			
+			
             break;
+		case "info":
+			document.getElementById("emailFRGroup").style.display = "block";
+			document.getElementById("emailENGroup").style.display = "block";
+			
+		break;
     }
 }
 
