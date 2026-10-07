@@ -300,6 +300,7 @@ textarea{
             <option value="info" id="optInfo">📢 Information</option>
             <option value="maintenance" id="optMaintenance">🔧 Maintenance</option>
             <option value="incident" id="optIncident">🚨 Incident</option>
+			<option value="alert" id="optAlert">⚙️ Alert</option>
         </select>
 		
 		<label id="lblCompanyName">Nom de compagnie</label>
@@ -313,7 +314,7 @@ textarea{
             <label id="lblTime">Heure</label>
             <input type="time" id="time">
         </div>
-
+	<div id="frenchGroup">
         <div class="section-title">
             🇫🇷 Français
         </div>
@@ -334,11 +335,19 @@ textarea{
         <label id="lblDescription">Description</label>
         <textarea id="description"></textarea>
 		
+		<div id="itTeamMsgFRGroup">
+			<label id="lblITMsgFR">Message de l'équipe TI</label>
+			<input id="itMsgFR" type="text" >
+		</div>
+		
 		<div id="emailFRGroup">
 			<label id="lblEmailAddressFR">Courriel</label>
 			<input id="emailAddressFR" type="text" >
 		</div>
+		
+	</div>
 
+	<div id="englishGroup">
         <div class="section-title">
             🇬🇧 English
         </div>
@@ -363,12 +372,19 @@ textarea{
 			<label id="lblEmailAddressEN">Courriel</label>
 			<input id="emailAddressEN" type="text" >
 		</div>
+		
+		<div id="itTeamMsgENGroup">
+			<label id="lblITMsgEN">Message de l'équipe TI</label>
+			<input id="itMsgEN" type="text" >
+		</div>
 
         <div id="dateGroup">
             <label id="lblDate">Date</label>
             <input type="date" id="date">
         </div>
-
+		
+		
+	</div>
 
 
         <button onclick="copyToOutlook()" id="copyBtn">
@@ -453,13 +469,14 @@ const languageField=document.getElementById("language");
 const companyNameField = document.getElementById("companyName");
 const localisationField = document.getElementById("localisation");
 const emailAddressFRField = document.getElementById("emailAddressFR");
-
+const itTeamMsgFRField = document.getElementById("itMsgFR");
 
 const titleFieldEN=document.getElementById("titleEN");
 const descFieldEN=document.getElementById("descriptionEN");
 const servicesFieldEN=document.getElementById("servicesEN");
 const importantNoteFieldEN=document.getElementById("importantNoteEN");
 const emailAddressENField = document.getElementById("emailAddressEN");
+const itTeamMsgENField = document.getElementById("itMsgEN");
 
 const translations={
 fr:{
@@ -481,9 +498,12 @@ copied:"✅ HTML copié. Collez dans Outlook avec CTRL+V",
 info:"📢 Information",
 maintenance:"🔧 Maintenance",
 incident:"🚨 Incident",
+alert:"🚨 Alerte",
 helpTitle: "ℹ️ Guide rapide",
 emailAddressFR: "Courriel",
 emailAddressEN: "Courriel",
+itTeamMsgFR: "Message de l'équipe TI",
+itTeamMsgEN: "Message de l'équipe TI",
 helpContent: `
 <p><strong>Comment utiliser l'application :</strong></p>
 
@@ -501,6 +521,8 @@ helpContent: `
 <li>📢 Information</li>
 <li>🔧 Maintenance</li>
 <li>🚨 Incident</li>
+<li>🚨 Alerte</li>
+
 </ul>
 
 <p>
@@ -533,9 +555,12 @@ copied:"✅ HTML copied. Paste into Outlook with CTRL+V",
 info:"📢 Information",
 maintenance:"🔧 Maintenance",
 incident:"🚨 Incident",
+alert:"🚨 Alert",
 helpTitle: "ℹ️ Quick Guide",
 emailAddressFR: "Email Address",
 emailAddressEN: "Email Address",
+itTeamMsgFR: "Message from the IT Team",
+itTeamMsgEN: "Message from the IT Team",
 helpContent: `
 <p><strong>How to use the application:</strong></p>
 
@@ -553,6 +578,7 @@ helpContent: `
 <li>📢 Information</li>
 <li>🔧 Maintenance</li>
 <li>🚨 Incident</li>
+<li>🚨 Alert</li>
 </ul>
 
 <p>
@@ -608,6 +634,10 @@ function updateFieldVisibility() {
 	document.getElementById("servicesENGroup").style.display = "none";
 	document.getElementById("emailFRGroup").style.display = "none";
 	document.getElementById("emailENGroup").style.display = "none";
+	document.getElementById("frenchGroup").style.display = "none";
+	document.getElementById("englishGroup").style.display = "none";
+	document.getElementById("itTeamMsgENGroup").style.display = "none";
+	document.getElementById("itTeamMsgFRGroup").style.display = "none";
 
     switch(type) {
 
@@ -615,6 +645,8 @@ function updateFieldVisibility() {
 
 			document.getElementById("importantNoteGroup").style.display = "block";
 			document.getElementById("importantNoteENGroup").style.display = "block";
+			document.getElementById("frenchGroup").style.display = "block";
+			document.getElementById("englishGroup").style.display = "block";
 
             break;
 
@@ -623,12 +655,23 @@ function updateFieldVisibility() {
             document.getElementById("servicesGroup").style.display = "block";
 			document.getElementById("timeGroup").style.display = "block";
 			document.getElementById("servicesENGroup").style.display = "block";
-			
+			document.getElementById("frenchGroup").style.display = "block";
+			document.getElementById("englishGroup").style.display = "block";
 			
             break;
 		case "info":
 			document.getElementById("emailFRGroup").style.display = "block";
 			document.getElementById("emailENGroup").style.display = "block";
+			document.getElementById("frenchGroup").style.display = "block";
+			document.getElementById("englishGroup").style.display = "block";
+			
+		break;
+		
+		case "alert":
+			document.getElementById("frenchGroup").style.display = "block";
+			document.getElementById("englishGroup").style.display = "block";
+			document.getElementById("itTeamMsgFRGroup").style.display = "block";
+			document.getElementById("itTeamMsgENGroup").style.display = "block";
 			
 		break;
     }
@@ -689,6 +732,15 @@ translations[lang].maintenance;
 document.getElementById("optIncident").textContent=
 translations[lang].incident;
 
+document.getElementById("optAlert").textContent=
+translations[lang].alert;
+
+document.getElementById("lblITMsgEN").textContent=
+translations[lang].itTeamMsgEN;
+
+document.getElementById("lblITMsgFR").textContent=
+translations[lang].itTeamMsgFR;
+
 document.getElementById("lblEmailAddressFR").textContent=
 translations[lang].emailAddressFR;
 
@@ -715,6 +767,8 @@ let companyName=companyNameField.value || "-";
 let localisation=localisationField.value || "-";
 let emailAddressFR=emailAddressFRField.value || "-";
 let emailAddressEN=emailAddressENField.value || "-";
+let itMessageFR=itTeamMsgFRField.value || "-";
+let itMessageEN=itTeamMsgENField.value || "-";
 
 
 
@@ -1283,6 +1337,170 @@ Thank you for your understanding.
 						
 `;
 break;
+
+case "alert":
+
+html=`
+<table width="100%" cellpadding="0" cellspacing="0" border="0"
+style="background:#F5F7FA;padding:30px 15px;font-family:Segoe UI,Arial,sans-serif;">
+<tr>
+<td align="center">
+
+<table width="700" cellpadding="0" cellspacing="0" border="0"
+style="max-width:700px;background:#FFFFFF;border-radius:12px;overflow:hidden;">
+
+<!-- Entête FR -->
+<tr>
+<td style="background:#0F172A;color:#FFFFFF;padding:18px 25px;">
+<table width="100%">
+<tr>
+<td>
+<strong>${companyName}</strong><br>
+Équipe TI
+</td>
+<td align="right" style="font-size:12px;opacity:0.85;">
+Communication d'alerte - ${localisation}
+</td>
+</tr>
+</table>
+</td>
+</tr>	
+
+<!-- Bannière Incident -->
+<tr>
+<td style="background:#DC2626;color:#FFFFFF;padding:16px 25px;">
+<table width="100%">
+<tr>
+<td>
+<strong style="font-size:18px;">
+🚨 Alerte
+</strong>
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Contenu FR -->
+<tr>
+<td style="padding:30px 25px;color:#334155;font-size:14px;line-height:1.6;">
+
+<h2 style="margin-top:0;color:#0F172A;font-size:22px;">
+${title}
+</h2>
+
+<p>
+${desc}
+</p>
+
+
+<!-- Message TI -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0"
+style="margin:25px 0;background:#F8FAFC;border-left:5px solid #64748B;border-radius:8px;">
+<tr>
+<td style="padding:18px;">
+<strong>Message de l'équipe TI</strong>
+<div style="margin-top:10px;">
+
+${itMessageFR}
+
+</div>
+</td>
+</tr>
+</table>
+
+
+<p style="margin-top:25px;">
+Merci de votre compréhension.
+</p>
+
+</td>
+</tr>
+
+<!-- Séparateur -->
+<tr>
+<td style="border-top:1px solid #E2E8F0;"></td>
+</tr>
+
+<!-- Entête EN -->
+<tr>
+<td style="background:#0F172A;color:#FFFFFF;padding:18px 25px;">
+<table width="100%">
+<tr>
+<td>
+<strong>${companyName}</strong><br>
+IT Team
+</td>
+<td align="right" style="font-size:12px;opacity:0.85;">
+Alert Communication - ${localisation}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Bannière EN -->
+<tr>
+<td style="background:#DC2626;color:#FFFFFF;padding:16px 25px;">
+<table width="100%">
+<tr>
+<td>
+<strong style="font-size:18px;">
+🚨 Ongoing Incident
+</strong>
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Contenu EN -->
+<tr>
+<td style="padding:30px 25px;color:#334155;font-size:14px;line-height:1.6;">
+
+<h2 style="margin-top:0;color:#0F172A;font-size:22px;">
+${titleEN}
+</h2>
+
+<p>
+${descEN}
+</p>
+
+
+<!-- IT Message -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0"
+style="margin:25px 0;background:#F8FAFC;border-left:5px solid #64748B;border-radius:8px;">
+<tr>
+<td style="padding:18px;">
+<strong>Message from the IT Team</strong>
+<div style="margin-top:10px;">
+
+${itMessageEN}
+
+</div>
+</td>
+</tr>
+</table>
+
+
+<p style="margin-top:25px;">
+Thank you for your understanding.
+</p>
+
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+						
+						
+`;
+break;
 }
 
 document.getElementById("preview").innerHTML=html;
@@ -1351,6 +1569,8 @@ companyNameField.addEventListener("input", renderPreview);
 localisationField.addEventListener("input", renderPreview);
 emailAddressFRField.addEventListener("input", renderPreview);
 emailAddressENField.addEventListener("input", renderPreview);
+itTeamMsgFRField.addEventListener("input", renderPreview);
+itTeamMsgENField.addEventListener("input", renderPreview);
 typeField.addEventListener("change", () => {
 
     updateFieldVisibility();
