@@ -28,5 +28,5 @@
     "incident": "🚨 Incident",
     "alert": "📣 Alert",
     "helpTitle": "ℹ️ Quick Guide",
-    "helpContent": "<p><strong>How to use the application:</strong></p><ol><li>Select the announcement type.</li><li>Fill in the required fields.</li><li>Review the live preview.</li><li>Click <strong>Copy to Outlook</strong>.</li><li>Paste directly into Outlook using <strong>CTRL+V</strong>.</li></ol><p><strong>Available types:</strong></p><ul><li>📢 Information</li><li>🔧 Maintenance</li><li>🚨 Incident</li><li>📣 Alert</li></ul><p>Visible fields automatically change based on the selected announcement type.</p><hr><small>IT Announcement Generator for Outlook</small>"
+    "helpContent": "<p><strong>How to use the application:</strong></p><ol><li>Select the announcement type.</li> <li>Fill in the required fields.</li><li>Review the live preview.</li><li>Click <strong>Copy to Outlook</strong>.</li><li>Paste directly into Outlook using <strong>CTRL+V</strong>.</li></ol><p><strong>Available types:</strong></p><ul><li>📢 Information</li><li>🔧 Maintenance</li><li>🚨 Incident</li><li>📣 Alert</li></ul><p>Visible fields automatically change based on the selected announcement type.</p><hr><small>IT Announcement Generator for Outlook</small>"
 }
