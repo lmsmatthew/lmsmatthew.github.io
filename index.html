@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 
     <link rel="stylesheet" href="CSS/styles.css">
     <script src="JS/script.js" defer></script>
-    
-­</head>
+
+    ­
+</head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,182 +18,234 @@
 
 <body>
 
-<div class="hero">
-    <h1 id="lblApplicationTitle">📢 Générateur d'annonces IT</h1>
-    <p id="lblApplicationDescription">Création rapide d'annonces IT pour Outlook.</p>
-</div>
+    <div class="hero">
+        <h1 id="lblApplicationTitle" data-lang="applicationTitle">
+            📢 Générateur d'annonces IT
+        </h1>
 
-<div class="container">
+        <p id="lblApplicationDescription" data-lang="applicationDescription">
+            Création rapide d'annonces IT pour Outlook.
+        </p>
+    </div>
 
-    <div class="panel">
+    <div class="container">
 
-        <h2>⚙️ Configuration</h2>
+        <div class="panel">
 
-        <label id="lblLanguage">Langue</label>
-        <select id="language">
-            <option value="fr">Français</option>
-            <option value="en">English</option>
-        </select>
+            <h2>⚙️ Configuration</h2>
 
-        <label id="lblType">Type</label>
-        <select id="type">
-            <option value="" selected>---</option>
-            <option value="info" id="optInfo">📢 Information</option>
-            <option value="maintenance" id="optMaintenance">🔧 Maintenance</option>
-            <option value="incident" id="optIncident">🚨 Incident</option>
-			<option value="alert" id="optAlert">📣 Alert</option>
-        </select>
-		
-		<label id="lblCompanyName">Nom de compagnie</label>
-		<input id="companyName" type="text" >
+            <label id="lblLanguage" data-lang="language">
+                Langue
+            </label>
+            <select id="language">
+                <option value="fr">Français</option>
+                <option value="en">English</option>
+            </select>
 
-		<label id="lbllocalisation">Localisation</label>
-		<input id="localisation" type="text" >
-		
+            <label id="lblType" data-lang="type">
+                Type
+            </label>
+            <select id="type">
+                <option value="" selected>---</option>
+                <option value="info" id="optInfo" data-lang="info">
+                    📢 Information
+                </option>
+                <option value="maintenance" id="optMaintenance" data-lang="maintenance">
+                    🔧 Maintenance
+                </option>
+                <option value="incident" id="optIncident" data-lang="incident">
+                    🚨 Incident
+                </option>
+                <option value="alert" id="optAlert" data-lang="alert">
+                    📣 Alert
+                </option>
+            </select>
 
-		<div id="timeGroup">
-            <label id="lblTime">Heure</label>
-            <input type="time" id="time">
+            <label id="lblCompanyName" data-lang="companyName">
+                Nom de compagnie
+            </label>
+            <input id="companyName" type="text">
+
+            <label id="lbllocalisation" data-lang="localisation">
+                Localisation
+            </label>
+            <input id="localisation" type="text">
+
+
+            <div id="timeGroup">
+                <label id="lblTime" data-lang="time">
+                    Heure
+                </label>
+                <input type="time" id="time">
+            </div>
+            <div id="frenchGroup">
+                <div class="section-title" data-lang="frenchSection">
+                    🇫🇷 Français
+                </div>
+
+                <label id="lblTitle" data-lang="title">
+                    Titre
+                </label>
+                <input id="title">
+
+                <label id="lblDescription" data-lang="description">
+                    Description
+                </label>
+                <textarea id="description"></textarea>
+
+                <div id="servicesGroup">
+                    <label id="lblServices" data-lang="services">
+                        Services affectés
+                    </label>
+                    <textarea id="services"></textarea>
+                </div>
+
+                <div id="importantNoteGroup">
+                    <label id="lblimportantNote" data-lang="importantNote">
+                        Point d'attention
+                    </label>
+                    <input id="importantNote">
+                </div>
+
+                <div id="itTeamMsgFRGroup">
+                    <label id="lblITMsgFR" data-lang="itTeamMsgFR">
+                        Message de l'équipe TI
+                    </label>
+                    <input id="itMsgFR" type="text">
+                </div>
+
+                <div id="emailFRGroup">
+                    <label id="lblEmailAddressFR" data-lang="emailAddressFR">
+                        Courriel
+                    </label>
+                    <input id="emailAddressFR" type="text">
+                </div>
+
+            </div>
+
+            <div id="englishGroup">
+                <div class="section-title" data-lang="englishSection">
+                    🇬🇧 English
+                </div>
+
+                <label id="lblTitleEN" data-lang="titleEN">
+                    Titre en anglais
+                </label>
+                <input id="titleEN">
+
+                <label id="lblDescriptionEN" data-lang="descriptionEN">
+                    Description en anglais
+                </label>
+                <textarea id="descriptionEN"></textarea>
+
+
+                <div id="servicesENGroup">
+                    <label id="lblServicesEN" data-lang="servicesEN">
+                        Services affected
+                    </label>
+                    <textarea id="servicesEN"></textarea>
+                </div>
+
+                <div id="importantNoteENGroup">
+                    <label id="lblimportantNoteEN" data-lang="importantNoteEN">
+                        Important note
+                    </label>
+                    <input id="importantNoteEN">
+                </div>
+
+
+                <div id="emailENGroup">
+                    <label id="lblEmailAddressEN" data-lang="emailAddressEN">
+                        Courriel
+                    </label>
+                    <input id="emailAddressEN" type="text">
+                </div>
+
+                <div id="itTeamMsgENGroup">
+                    <label id="lblITMsgEN" data-lang="itTeamMsgEN">
+                        Message de l'équipe TI
+                    </label>
+                    <input id="itMsgEN" type="text">
+                </div>
+
+                <div id="dateGroup">
+                    <label id="lblDate" data-lang="date">
+                        Date
+                    </label>
+                    <input type="date" id="date">
+                </div>
+
+
+            </div>
+
+
+            <button id="copyBtn" data-lang="copy">
+                📋 Copier vers Outlook
+            </button>
+
         </div>
-	<div id="frenchGroup">
-        <div class="section-title">
-            🇫🇷 Français
+
+        <div class="panel">
+
+            <h2 id="previewTitle" data-lang="preview">
+                👀 Aperçu en temps réel
+            </h2>
+
+            <div id="preview"></div>
+
+            <div id="emailHtml" style="display:none"></div>
+
         </div>
 
-        <label id="lblTitle">Titre</label>
-        <input id="title">
 
-        <label id="lblDescription">Description</label>
-        <textarea id="description"></textarea>
+    </div>
 
-        <div id="servicesGroup">
-            <label id="lblServices">Services affectés</label>
-            <textarea id="services"></textarea>
+
+    <div id="toast" class="toast">
+
+        <div class="toast-icon">✅</div>
+
+        <div class="toast-content">
+
+            <div class="toast-title">
+                Succès
+            </div>
+
+            <div class="toast-message">
+                Le contenu HTML a été copié dans le presse‑papiers.
+            </div>
+
         </div>
 
-        <div id="importantNoteGroup">
-            <label id="lblimportantNote">Point d'attention</label>
-            <input id="importantNote">
-        </div>
-		
-		<div id="itTeamMsgFRGroup">
-			<label id="lblITMsgFR">Message de l'équipe TI</label>
-			<input id="itMsgFR" type="text" >
-		</div>
-		
-		<div id="emailFRGroup">
-			<label id="lblEmailAddressFR">Courriel</label>
-			<input id="emailAddressFR" type="text" >
-		</div>
-		
-	</div>
-
-	<div id="englishGroup">
-        <div class="section-title">
-            🇬🇧 English
-        </div>
-
-        <label id="lblTitleEN">Titre en anglais</label>
-        <input id="titleEN">
-
-        <div id="servicesENGroup">
-            <label id="lblServicesEN">Services affected</label>
-            <textarea id="servicesEN"></textarea>
-        </div>
-
-        <div id="importantNoteENGroup">
-            <label id="lblimportantNoteEN">Important note</label>
-            <input id="importantNoteEN">
-        </div>
-
-        <label id="lblDescriptionEN">Description en anglais</label>
-        <textarea id="descriptionEN"></textarea>
-		
-		<div id="emailENGroup">
-			<label id="lblEmailAddressEN">Courriel</label>
-			<input id="emailAddressEN" type="text" >
-		</div>
-		
-		<div id="itTeamMsgENGroup">
-			<label id="lblITMsgEN">Message de l'équipe TI</label>
-			<input id="itMsgEN" type="text" >
-		</div>
-
-        <div id="dateGroup">
-            <label id="lblDate">Date</label>
-            <input type="date" id="date">
-        </div>
-		
-		
-	</div>
-
-
-        <button onclick="copyToOutlook()" id="copyBtn">
-            📋 Copier vers Outlook
+        <button class="toast-close" onclick="hideToast()">
+            ✕
         </button>
 
     </div>
 
-    <div class="panel">
-
-        <h2 id="previewTitle">
-            👀 Aperçu en temps réel
-        </h2>
-
-        <div id="preview"></div>
-
-        <div id="emailHtml" style="display:none"></div>
-
+    <div id="helpButton" onclick="toggleHelp()">
+        ?
     </div>
 
+    <div id="helpPopup">
 
-</div>
-
-
-<div id="toast" class="toast">
-
-    <div class="toast-icon">✅</div>
-
-    <div class="toast-content">
-
-        <div class="toast-title">
-            Succès
+        <div class="help-header" id="helpTitle">
+            ℹ️ Guide rapide
         </div>
 
-        <div class="toast-message">
-            Le contenu HTML a été copié dans le presse‑papiers.
+        <div class="help-content" id="helpContent">
+
+            <ul>
+                <li>Choisir le type d'annonce.</li>
+                <li>Remplir les informations.</li>
+                <li>Valider l'aperçu.</li>
+                <li>Copier dans Outlook.</li>
+            </ul>
+
         </div>
 
     </div>
-
-    <button class="toast-close" onclick="hideToast()">
-        ✕
-    </button>
-
-</div>
-
-<div id="helpButton" onclick="toggleHelp()">
-    ?
-</div>
-
-<div id="helpPopup">
-
-    <div class="help-header" id="helpTitle">
-        ℹ️ Guide rapide
-    </div>
-
-    <div class="help-content" id="helpContent">
-
-        <ul>
-            <li>Choisir le type d'annonce.</li>
-            <li>Remplir les informations.</li>
-            <li>Valider l'aperçu.</li>
-            <li>Copier dans Outlook.</li>
-        </ul>
-
-    </div>
-
-</div>
 
 </body>
+
 </html>
