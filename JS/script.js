@@ -1,3 +1,4 @@
+const languageField = document.getElementById("language");
 
 const titleField = document.getElementById("title");
 const descField = document.getElementById("description");
@@ -6,7 +7,6 @@ const dateField = document.getElementById("date");
 const timeField = document.getElementById("time");
 const servicesField = document.getElementById("services");
 const importantNoteField = document.getElementById("importantNote");
-const languageField = document.getElementById("language");
 const companyNameField = document.getElementById("companyName");
 const localisationField = document.getElementById("localisation");
 const emailAddressFRField = document.getElementById("emailAddressFR");
@@ -19,123 +19,34 @@ const importantNoteFieldEN = document.getElementById("importantNoteEN");
 const emailAddressENField = document.getElementById("emailAddressEN");
 const itTeamMsgENField = document.getElementById("itMsgEN");
 
-const translations = {
-    fr: {
-        applicationTitle: "📢 Générateur d'annonces IT",
-        applicationDescription: "Création rapide d'annonces IT pour Outlook.",
-        language: "Langue",
-        title: "Titre",
-        titleEN: "Titre",
-        description: "Description",
-        descriptionEN: "Description",
-        date: "Date",
-        time: "Heure",
-        services: "Services affectés",
-        servicesEN: "Services affectés",
-        importantNote: "Point d'attention",
-        importantNoteEN: "Point d'attention",
-        preview: "👀 Aperçu",
-        copy: "📋 Copier vers Outlook",
-        copied: "✅ HTML copié. Collez dans Outlook avec CTRL+V",
-        info: "📢 Information",
-        maintenance: "🔧 Maintenance",
-        incident: "🚨 Incident",
-        alert: "📣Alerte",
-        helpTitle: "ℹ️ Guide rapide",
-        emailAddressFR: "Courriel",
-        emailAddressEN: "Courriel",
-        itTeamMsgFR: "Message de l'équipe TI",
-        itTeamMsgEN: "Message de l'équipe TI",
-        helpContent: `
-<p><strong>Comment utiliser l'application :</strong></p>
+let translations = {};
 
-<ol>
-<li>Sélectionnez le type d'annonce.</li>
-<li>Remplissez les champs requis.</li>
-<li>Visualisez le résultat dans l'aperçu.</li>
-<li>Cliquez sur <strong>Copier vers Outlook</strong>.</li>
-<li>Collez directement dans Outlook avec <strong>CTRL+V</strong>.</li>
-</ol>
+async function updateLanguage() {
+    const lang = languageField.value;
 
-<p><strong>Types disponibles :</strong></p>
+    const response = await fetch(`./lang/${lang}.json`);
+    translations = await response.json();
 
-<ul>
-<li>📢 Information</li>
-<li>🔧 Maintenance</li>
-<li>🚨 Incident</li>
-<li>📣 Alerte</li>
+    document.querySelectorAll("[data-lang]").forEach(element => {
+        const key = element.dataset.lang;
 
-</ul>
+        if (translations[key]) {
+            element.textContent = translations[key];
+        }
+    });
 
-<p>
-Les champs affichés changent automatiquement selon le type d'annonce sélectionné.
-</p>
+    document.getElementById("helpTitle").innerHTML =
+        translations.helpTitle || "";
 
-<hr>
+    document.getElementById("helpContent").innerHTML =
+        translations.helpContent || "";
 
-<small>
-Générateur d'annonces IT pour Outlook
-</small>
-`
-    },
-    en: {
-        applicationTitle: "📢 IT Announcement Generator for Outlook",
-        applicationDescription: "Quick IT Announcement Creation for Outlook.",
-        language: "Language",
-        title: "Title",
-        titleEN: "Title",
-        description: "Description",
-        descriptionEN: "Description",
-        date: "Date",
-        time: "Time",
-        services: "Affected Services",
-        servicesEN: "Affected Services",
-        importantNote: "Important note",
-        importantNoteEN: "Important note",
-        preview: "👀 Preview",
-        copy: "📋 Copy to Outlook",
-        copied: "✅ HTML copied. Paste into Outlook with CTRL+V",
-        info: "📢 Information",
-        maintenance: "🔧 Maintenance",
-        incident: "🚨 Incident",
-        alert: "📣 Alert",
-        helpTitle: "ℹ️ Quick Guide",
-        emailAddressFR: "Email Address",
-        emailAddressEN: "Email Address",
-        itTeamMsgFR: "Message from the IT Team",
-        itTeamMsgEN: "Message from the IT Team",
-        helpContent: `
-<p><strong>How to use the application:</strong></p>
+    renderPreview();
+}
 
-<ol>
-<li>Select the announcement type.</li>
-<li>Fill in the required fields.</li>
-<li>Review the live preview.</li>
-<li>Click <strong>Copy to Outlook</strong>.</li>
-<li>Paste directly into Outlook using <strong>CTRL+V</strong>.</li>
-</ol>
+languageField.addEventListener("change", updateLanguage);
 
-<p><strong>Available types:</strong></p>
-
-<ul>
-<li>📢 Information</li>
-<li>🔧 Maintenance</li>
-<li>🚨 Incident</li>
-<li>📣 Alert</li>
-</ul>
-
-<p>
-Visible fields automatically change based on the selected announcement type.
-</p>
-
-<hr>
-
-<small>
-IT Announcement Generator for Outlook
-</small>
-`
-    }
-};
+updateLanguage();
 
 function showToast(title, message, success = true) {
 
@@ -220,88 +131,7 @@ function updateFieldVisibility() {
     }
 }
 
-function updateLanguage() {
 
-    let lang = languageField.value;
-
-    document.getElementById("lblTitle").textContent =
-        translations[lang].title;
-
-    document.getElementById("lblTitleEN").textContent =
-        translations[lang].titleEN;
-
-    document.getElementById("lblApplicationTitle").textContent =
-        translations[lang].applicationTitle;
-
-    document.getElementById("lblDescription").textContent =
-        translations[lang].description;
-
-    document.getElementById("lblDescriptionEN").textContent =
-        translations[lang].descriptionEN;
-
-    document.getElementById("lblLanguage").textContent =
-        translations[lang].language;
-
-    document.getElementById("lblDate").textContent =
-        translations[lang].date;
-
-    document.getElementById("lblTime").textContent =
-        translations[lang].time;
-
-    document.getElementById("lblServices").textContent =
-        translations[lang].services;
-
-    document.getElementById("lblServicesEN").textContent =
-        translations[lang].servicesEN;
-
-    document.getElementById("lblimportantNote").textContent =
-        translations[lang].importantNote;
-
-    document.getElementById("lblimportantNoteEN").textContent =
-        translations[lang].importantNoteEN;
-
-    document.getElementById("previewTitle").textContent =
-        translations[lang].preview;
-
-    document.getElementById("copyBtn").textContent =
-        translations[lang].copy;
-
-    document.getElementById("optInfo").textContent =
-        translations[lang].info;
-
-    document.getElementById("optMaintenance").textContent =
-        translations[lang].maintenance;
-
-    document.getElementById("optIncident").textContent =
-        translations[lang].incident;
-
-    document.getElementById("optAlert").textContent =
-        translations[lang].alert;
-
-    document.getElementById("lblITMsgEN").textContent =
-        translations[lang].itTeamMsgEN;
-
-    document.getElementById("lblITMsgFR").textContent =
-        translations[lang].itTeamMsgFR;
-
-    document.getElementById("lblEmailAddressFR").textContent =
-        translations[lang].emailAddressFR;
-
-    document.getElementById("lblEmailAddressEN").textContent =
-        translations[lang].emailAddressEN;
-
-    document.getElementById("lblApplicationDescription").textContent =
-        translations[lang].applicationDescription;
-
-
-    document.getElementById("helpTitle").innerHTML =
-        translations[lang].helpTitle;
-
-    document.getElementById("helpContent").innerHTML =
-        translations[lang].helpContent;
-
-    renderPreview();
-}
 
 function renderPreview() {
 
