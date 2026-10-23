@@ -150,12 +150,12 @@ function renderPreview() {
 
 
     let services = (servicesField.value || "-").replace(/\n/g, "<br>");
-    let importantNote = importantNoteField.value || "-";
+    let importantNote = (importantNoteField.value || "-").replace(/\n/g, "<br>");
 
     let titleEN = titleFieldEN.value || "Title";
     let descEN = (descFieldEN.value || "").replace(/\n/g, "<br>");
     let servicesEN = (servicesFieldEN.value || "-").replace(/\n/g, "<br>");
-    let importantNoteEN = importantNoteFieldEN.value || "-";
+    let importantNoteEN = (importantNoteFieldEN.value || "-").replace(/\n/g, "<br>");
 
     let html = "";
 
@@ -322,8 +322,10 @@ emailAddressENField.addEventListener("input", renderPreview);
 itTeamMsgFRField.addEventListener("input", renderPreview);
 itTeamMsgENField.addEventListener("input", renderPreview);
 typeField.addEventListener("change", () => {
+
     updateFieldVisibility();
     renderPreview();
+
 });
 timeField.addEventListener("input", renderPreview);
 servicesField.addEventListener("input", renderPreview);
