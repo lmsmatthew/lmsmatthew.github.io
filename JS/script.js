@@ -322,10 +322,8 @@ emailAddressENField.addEventListener("input", renderPreview);
 itTeamMsgFRField.addEventListener("input", renderPreview);
 itTeamMsgENField.addEventListener("input", renderPreview);
 typeField.addEventListener("change", () => {
-
     updateFieldVisibility();
     renderPreview();
-
 });
 timeField.addEventListener("input", renderPreview);
 servicesField.addEventListener("input", renderPreview);
