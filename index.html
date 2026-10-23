@@ -17,31 +17,24 @@
 </head>
 
 <body>
-
-    <div class="hero">
-        <h1 id="lblApplicationTitle" data-lang="applicationTitle">
-            📢 Générateur d'annonces IT
-        </h1>
-
-        <p id="lblApplicationDescription" data-lang="applicationDescription">
-            Création rapide d'annonces IT pour Outlook.
-        </p>
-    </div>
-
-    <div class="container">
-
-        <div class="panel">
-
-            <h2>⚙️ Configuration</h2>
-
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text" data-lang="applicationTitle">📢 Générateur d'annonces IT</span>
+            </div>
             <label id="lblLanguage" data-lang="language">
-                Langue
+                🌎 Langue
             </label>
             <select id="language">
-                <option value="fr">Français</option>
-                <option value="en">English</option>
+                <option value="fr" data-lang="languageFR">Français</option>
+                <option value="en" data-lang="languageEN">English</option>
             </select>
+        </nav>
+    </header>
 
+    <div class="container">
+        <div class="panel">
+            <h2>⚙️ Configuration</h2>
             <label id="lblType" data-lang="type">
                 Type
             </label>
@@ -60,7 +53,6 @@
                     📣 Alert
                 </option>
             </select>
-
             <label id="lblCompanyName" data-lang="companyName">
                 Nom de compagnie
             </label>
@@ -70,8 +62,6 @@
                 Localisation
             </label>
             <input id="localisation" type="text">
-
-
             <div id="timeGroup">
                 <label id="lblTime" data-lang="time">
                     Heure
@@ -82,24 +72,20 @@
                 <div class="section-title" data-lang="frenchSection">
                     🇫🇷 Français
                 </div>
-
                 <label id="lblTitle" data-lang="title">
                     Titre
                 </label>
                 <input id="title">
-
                 <label id="lblDescription" data-lang="description">
                     Description
                 </label>
                 <textarea id="description"></textarea>
-
                 <div id="servicesGroup">
                     <label id="lblServices" data-lang="services">
                         Services affectés
                     </label>
                     <textarea id="services"></textarea>
                 </div>
-
                 <div id="importantNoteGroup">
                     <label id="lblimportantNote" data-lang="importantNote">
                         Point d'attention
@@ -167,19 +153,10 @@
                     </label>
                     <input id="itMsgEN" type="text">
                 </div>
-
-                <div id="dateGroup">
-                    <label id="lblDate" data-lang="date">
-                        Date
-                    </label>
-                    <input type="date" id="date">
-                </div>
-
-
             </div>
 
 
-            <button id="copyBtn" data-lang="copy">
+            <button id="copyBtn" onclick="copyToOutlook()" data-lang="copy">
                 📋 Copier vers Outlook
             </button>
 
