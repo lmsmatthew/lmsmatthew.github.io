@@ -19,6 +19,8 @@ const importantNoteFieldEN = document.getElementById("importantNoteEN");
 const emailAddressENField = document.getElementById("emailAddressEN");
 const itTeamMsgENField = document.getElementById("itMsgEN");
 
+
+
 let translations = {};
 
 async function updateLanguage() {
@@ -80,7 +82,6 @@ function updateFieldVisibility() {
 
     const type = typeField.value;
 
-    document.getElementById("dateGroup").style.display = "none";
     document.getElementById("timeGroup").style.display = "none";
     document.getElementById("servicesGroup").style.display = "none";
     document.getElementById("importantNoteGroup").style.display = "none";
@@ -137,7 +138,7 @@ function renderPreview() {
 
     let title = titleField.value || "Titre";
     let desc = (descField.value || "").replace(/\n/g, "<br>");
-    let date = dateField.value || "-";
+
     let time = timeField.value || "-";
     let companyName = companyNameField.value || "-";
     let localisation = localisationField.value || "-";
@@ -250,7 +251,6 @@ function renderPreview() {
     }
 
     updateHtml(html);
-
 }
 
 function updateHtml(html) {
@@ -327,7 +327,6 @@ typeField.addEventListener("change", () => {
     renderPreview();
 
 });
-dateField.addEventListener("input", renderPreview);
 timeField.addEventListener("input", renderPreview);
 servicesField.addEventListener("input", renderPreview);
 importantNote.addEventListener("input", renderPreview);
